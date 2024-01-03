@@ -1,0 +1,19 @@
+name: file-deleter
+description: Deletes a list of files
+
+inputs:
+  file-list:
+    description: The list of file to be deleted
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Delete files
+      id: delete_files
+      shell: bash
+      run: |-
+        ls -laR
+        for file in "${{ inputs.file-list }}"; do
+          if [[ -f "$file" ]]; then rm -v "$file"
+        done
