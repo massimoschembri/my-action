@@ -13,7 +13,7 @@ runs:
       id: delete_files
       shell: bash
       run: |-
-        ls -laR
+        echo "${{ inputs.file-list }}"
         for file in "${{ inputs.file-list }}"; do
           [[ -f "$file" ]] && rm -v "$file" || true
         done
