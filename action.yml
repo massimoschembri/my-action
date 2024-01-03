@@ -14,7 +14,7 @@ runs:
       shell: bash
       run: |-
         echo "${{ inputs.file-list}}"
-        SEPARATED_FILES=$(echo "${{ inputs.file-list }}" | tr '\n' ' ')
-        for file in ${SEPARATED_FILES}; do
+        FILES=$(echo "${{ inputs.file-list }}" | tr '\n' ' ')
+        for file in ${FILES}; do
           [[ -f "$file" ]] && rm -v "$file" || true
         done
