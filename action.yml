@@ -15,5 +15,5 @@ runs:
       run: |-
         ls -laR
         for file in "${{ inputs.file-list }}"; do
-          if [[ -f "$file" ]]; then rm -v "$file"
+          [[ -f "$file" ]] && rm -v "$file" || true
         done
